@@ -13,10 +13,10 @@ app.use(cookieParser())
 
 db.init();
 
-app.route('/kursevi').get(kursHandler.get).post(kursHandler.create)
+app.route('/kursevi').get(kursHandler.get).post(userHandler.protectRoute, kursHandler.create)
 app.route('/akademija').get(akademijaHandler.get).post(akademijaHandler.create)
 app.route('/kursevi/:id').all(userHandler.protectRoute).get(kursHandler.getOne).post(kursHandler.update)
-app.delete('/delete/:id', kursHandler.delete)
+app.get('/delete/:id', kursHandler.delete)
 app.get('/logout', userHandler.logout)
 app.route('/login').get(userHandler.getLogin).post(userHandler.login)
 app.route('/signUp').get(userHandler.signUp).post(userHandler.createUser)

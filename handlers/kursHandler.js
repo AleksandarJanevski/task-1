@@ -31,7 +31,7 @@ exports.update = async (req, res) => {
 exports.delete = async (req, res) => {
     try {
         await kursevi.findByIdAndDelete(req.params.id);
-        res.status(204).redirect('/redirect');
+        res.status(204).redirect('/kursevi');
     } catch (err) {
         return res.status(500).json({ status: 'fail', message: err });
     }
