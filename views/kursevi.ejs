@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kursevi</title>
+  </head>
+  <body>
+    <h1>Welcome to our Courses!</h1>
+    <% if (course.length === 0) { %>
+    <h1>Nemame momentalno dostapni kursevi</h1>
+    <% } else { %> <% course.forEach(element => { %>
+    <p><%= element.ime %></p>
+    <p><%= element.adresa %></p>
+    <p><%= element.oblast %></p>
+    <p><a href="/kursevi/<%= element._id%>">View Course</a></p>
+    <hr />
+    <% }) %> <% } %>
+    <form action="/kursevi" method="post">
+      <input
+        type="text"
+        name="ime"
+        required
+        placeholder="vnesete ime na kurs"
+      /><br />
+      <input
+        type="text"
+        name="adresa"
+        required
+        placeholder="vnesete adresa"
+      /><br />
+      <input
+        type="text"
+        name="oblast"
+        required
+        placeholder="vnesete oblast"
+      /><br />
+      <button type="submit">Add Course</button>
+    </form>
+  </body>
+</html>

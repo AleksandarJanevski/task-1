@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kurs za <%=course.ime%></title>
+  </head>
+  <body>
+    <h1>Welcome to our Courses!</h1>
+    <a href="/logout">Logout</a>
+    <% if (course.length === 0) { %>
+    <h1>Nemame momentalno dostapni kursevi</h1>
+    <% } else { %>
+    <p><%=course.ime%></p>
+    <p><%=course.adresa%></p>
+    <% } %>
+    <a href="/delete/<%=course._id%>">Delete Course</a>
+    <hr />
+    <form action="/kursevi/<%=course._id%>" method="post">
+      <input
+        type="text"
+        name="ime"
+        required
+        placeholder="vnesete ime na kurs"
+      /><br />
+      <input
+        type="text"
+        name="adresa"
+        required
+        placeholder="vnesete adresa"
+      /><br />
+
+      <button type="submit">Update Course</button>
+    </form>
+  </body>
+</html>
